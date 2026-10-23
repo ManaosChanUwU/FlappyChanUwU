@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Flappy Chan UwU.obj",
+            "outputs": [
+                "x64\\Debug\\Flappy Chan UwU.cpp.obj.dt.module.json",
+                "x64\\Debug\\Flappy Chan UwU.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
