@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Flappy Chan UwU/Flappy Chan UwU.vcxproj" />
+  <Project Path="Flappy Chan UwU/Flappy Chan UwU.vcxproj" Id="b77dbad5-afc6-409c-abf5-79a023647781" />
 </Solution>

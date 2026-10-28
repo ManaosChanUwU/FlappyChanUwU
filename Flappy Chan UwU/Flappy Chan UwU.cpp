@@ -1,19 +1,70 @@
-// Flappy Chan UwU.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
+#include "raylib.h"
+
+using namespace std;
+
+struct Player {
+	float positionX;
+	float positionY;
+	int points;
+	float rectangleSize;
+	float speedY;
+	float flappForce;
+	float gravity;
+};
+
+struct Obstacle {
+	float positionX;
+	float positionY;
+	float speedX;
+	float size;
+};
+
+
+void startObstacle(Obstacle& obstacle, int screenWidth, int screenHeight)
+{
+	obstacle.positionX = screenWidth / 2 - obstacle.size / 2;
+	obstacle.positionY = screenHeight / 2 - obstacle.size / 2;	
+	obstacle.speedX = -100 * GetFrameTime();
+}
+
+void startGame(Player& player, Obstacle& obstacle, int screenWidth, int screenHeight)
+{
+	//tamaño de tablas y margen horizontal
+	float margin = screenWidth * 0.05f;
+
+	//inicio jugador 1
+	player.positionX = margin;
+	player.rectangleSize = 50;
+	player.positionY = (screenHeight / 2) - (player.rectangleSize / 2);
+	player.points = 0;
+
+
+	//pelota
+	obstacle.size = 50;
+	startObstacle(obstacle, screenWidth, screenHeight);
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	const int screenWidth = 1080;
+	const int screenHeight = 720;
+
+	InitWindow(screenWidth, screenHeight, "Flappy Chan UwU");
+
+	Player player;
+	Obstacle obstacle;
+
+	while (!WindowShouldClose())
+	{
+		startGame(player, obstacle, screenWidth, screenHeight);
+		startObstacle(obstacle, screenWidth, screenHeight);
+		BeginDrawing();
+		ClearBackground(BLACK);
+		DrawRectangle(player.positionX, player.positionY, player.rectangleSize, player.rectangleSize, WHITE);
+		DrawRectangle(obstacle.positionX, obstacle.positionY, obstacle.size, player.rectangleSize, WHITE);
+
+		EndDrawing();
+	}
+
 }
-
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
