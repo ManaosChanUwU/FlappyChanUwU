@@ -1,1 +1,8 @@
 .vs/
+# Carpetas de compilación
+Debug/
+Release/
+x64/
+x86/
+bin/
+obj/
