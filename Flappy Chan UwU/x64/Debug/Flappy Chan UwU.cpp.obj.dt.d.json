@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\aula 1\\tp2\\flappychanuwu\\flappy chan uwu\\flappy chan uwu.cpp",
+        "Source": "c:\\users\\papog\\source\\repos\\flappy chan uwu\\flappychanuwu\\flappy chan uwu\\flappy chan uwu.cpp",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
@@ -128,7 +128,7 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
-            "c:\\users\\aula 1\\tp2\\flappychanuwu\\libs\\include\\raylib.h",
+            "c:\\users\\papog\\source\\repos\\flappy chan uwu\\flappychanuwu\\libs\\include\\raylib.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\stdarg.h"
         ],
         "ImportedModules": [],

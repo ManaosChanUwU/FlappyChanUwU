@@ -1,10 +1,11 @@
 ﻿  Flappy Chan UwU.cpp
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(64,81): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(64,59): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(64,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(64,23): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(65,78): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(65,65): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(65,45): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Aula 1\tp2\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(65,25): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  Flappy Chan UwU.vcxproj -> C:\Users\Aula 1\tp2\FlappyChanUwU\x64\Debug\Flappy Chan UwU.exe
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(83,81): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(83,59): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(83,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(83,23): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(84,80): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(84,65): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(84,45): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(84,25): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\Flappy Chan UwU\Flappy Chan UwU.cpp(96,24): warning C4244: '=': conversión de 'const int' a 'float'; posible pérdida de datos
+  Flappy Chan UwU.vcxproj -> C:\Users\papog\source\repos\Flappy Chan UwU\FlappyChanUwU\x64\Debug\Flappy Chan UwU.exe
