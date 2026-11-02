@@ -122,7 +122,7 @@ int main()
 			}
 		}
 		//actualizacion
-		else if (actualScreen = PLAY)
+		else if (actualScreen == PLAY)
 		{
 			playerMovement(player, screenHeight);
 			obstacleMovement(obstacle, obstacle2, screenWidth, screenHeight);
@@ -195,6 +195,10 @@ void obstacleMovement(Obstacle& obstacle, Obstacle& obstacle2, const int screenW
 	if (obstacle.positionX + obstacle.sizeX < 0)
 	{
 		obstacle.positionX = screenWidth;
+		obstacle.sizeY = rand() % (screenHeight / 2) + (screenHeight / 8);
+		obstacle2.positionY = obstacle.sizeY + 300;//para ej juego final dejar en 150 o 200
+		obstacle2.sizeY = screenHeight - obstacle2.positionY;
+		cout << obstacle.sizeY;
 	}
 }
 
