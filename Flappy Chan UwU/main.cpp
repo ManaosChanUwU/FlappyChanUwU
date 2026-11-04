@@ -10,6 +10,9 @@
 //preparar release sin consola
 //buscar fondos para aprovechar el paralax
 
+//issues
+//revisar issues
+//la perdida manda al menu
 
 using namespace std;
 
@@ -75,7 +78,7 @@ bool colisionCheck(Obstacle obstacle, Obstacle obstacle2, Player player);
 
 enum GameScreen { MENU, PLAY, CREDITS, TUTORIAL, EXIT, VICTORY, LOSE };
 
-void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight);
+void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen actualScreen);
 
 int main()
 {
@@ -104,19 +107,19 @@ int main()
 
 		if (actualScreen == MENU)
 		{
-			if (IsKeyPressed(KEY_ONE) || IsKeyPressed(KEY_KP_1))
+			if (IsKeyPressed(KEY_ONE))
 			{
 				startGame(player, screenWidth, screenHeight);
 				actualScreen = PLAY;
 			}
-			if (IsKeyPressed(KEY_TWO) || IsKeyPressed(KEY_KP_2))
+			if (IsKeyPressed(KEY_TWO))
 			{
 				actualScreen = CREDITS;
 			}
 		}
 		else if (actualScreen == CREDITS)
 		{
-			if (IsKeyPressed(KEY_ENTER))
+			if (IsKeyPressed(KEY_Q))
 			{
 				actualScreen = MENU;
 			}
@@ -126,7 +129,11 @@ int main()
 		{
 			playerMovement(player, screenHeight);
 			obstacleMovement(obstacle, obstacle2, screenWidth, screenHeight);
-			loseConditions(obstacle, obstacle2, player, isRunning, screenHeight);
+			loseConditions(obstacle, obstacle2, player, isRunning, screenHeight, actualScreen);
+			if (IsKeyPressed(KEY_Q))
+			{
+				actualScreen = MENU;
+			}
 		}
 
 
@@ -142,9 +149,9 @@ int main()
 
 		if (actualScreen == MENU)
 		{
-			DrawText("PONG", screenWidth / 2, screenHeight * 0.2, 100, WHITE);
-			DrawText("1. JUGAR", screenWidth / 2, screenHeight * 0.5, 40, GREEN);
-			DrawText("2. CREDITOS", screenWidth / 2, screenHeight * 0.6, 40, YELLOW);
+			DrawText("FlappuChanUwU", screenWidth / 3, screenHeight * 0.2, 50, WHITE);
+			DrawText("1. JUGAR", screenWidth / 3, screenHeight * 0.5, 40, GREEN);
+			DrawText("2. CREDITOS", screenWidth / 3, screenHeight * 0.6, 40, YELLOW);
 		}
 		else if (actualScreen == PLAY)
 		{
@@ -169,19 +176,19 @@ int main()
 
 //practicar ingles:c
 //hacer pantallas de derrota y luego volver al menu
-void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight)
+void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen actualScreen)
 {
 	//colisiones
 	if (colisionCheck(obstacle, obstacle2, player))
 	{
 		cout << "Acontecio una colision" << endl;
-		isRunning = false;
+		actualScreen = MENU;
 	}
 	//piso
 	if (player.positionY > screenHeight)
 	{
 		cout << "Perdiste: tocaste el suelo" << endl;
-		isRunning = false;
+		actualScreen = MENU;
 	}
 }
 
