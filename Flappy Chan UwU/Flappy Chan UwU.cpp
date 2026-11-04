@@ -46,7 +46,7 @@ void startObstacle(Obstacle& obstacle, Obstacle& obstacle2, int screenWidth, int
 	//obstáculo inferior
 	obstacle2.sizeX = 50;
 	obstacle2.positionX = obstacle.positionX;
-	obstacle2.positionY = obstacle.sizeY + 300;//para ej juego final dejar en 150 o 200
+	obstacle2.positionY = obstacle.sizeY + 300;//para ej juego final dejar en 150 o 200, y hacer una variable a parte
 	obstacle2.sizeY = screenHeight - obstacle2.positionY;
 	obstacle2.speedX = obstacle.speedX;
 }
@@ -168,6 +168,7 @@ int main()
 }
 
 //practicar ingles:c
+//hacer pantallas de derrota y luego volver al menu
 void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight)
 {
 	//colisiones
