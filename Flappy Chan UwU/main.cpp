@@ -55,7 +55,7 @@ void startObstacle(Obstacle& obstacle, Obstacle& obstacle2, int screenWidth, int
 }
 
 
-void startGame(Player& player, int screenWidth, int screenHeight)
+void startGame(Player& player, int screenWidth, int screenHeight, Obstacle& obstacle, Obstacle& obstacle2)
 {
 	float margin = screenWidth * 0.05f;
 
@@ -67,6 +67,9 @@ void startGame(Player& player, int screenWidth, int screenHeight)
 	player.speedY = 0;
 	player.gravity = 300;
 	player.flappForce = -200;
+
+	startObstacle(obstacle, obstacle2, screenWidth, screenHeight);
+
 }
 
 void playerMovement(Player& player, const int screenHeight);
@@ -76,9 +79,9 @@ void obstacleMovement(Obstacle& obstacle, Obstacle& obstacle2, const int screenW
 bool colisionCheck(Obstacle obstacle, Obstacle obstacle2, Player player);
 
 
-enum GameScreen { MENU, PLAY, CREDITS, TUTORIAL, EXIT, VICTORY, LOSE };
+enum GameScreen { MENU, PLAY, CREDITS, TUTORIAL, EXIT, LOSE };
 
-void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen actualScreen);
+void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen& actualScreen);
 
 int main()
 {
@@ -88,8 +91,8 @@ int main()
 	const int screenHeight = 720;
 
 	bool isRunning = true;
-
 	InitWindow(screenWidth, screenHeight, "Flappy Chan UwU");
+	SetExitKey(KEY_NULL);
 
 	Player player;
 	Obstacle obstacle;
@@ -98,10 +101,9 @@ int main()
 
 	int selector;
 
-	startGame(player, screenWidth, screenHeight);
-	startObstacle(obstacle, obstacle2, screenWidth, screenHeight);
+	startGame(player, screenWidth, screenHeight, obstacle, obstacle2);
 
-	while (!WindowShouldClose() && isRunning)
+	while (!WindowShouldClose() && actualScreen != EXIT)
 	{
 
 
@@ -109,19 +111,46 @@ int main()
 		{
 			if (IsKeyPressed(KEY_ONE))
 			{
-				startGame(player, screenWidth, screenHeight);
+				startGame(player, screenWidth, screenHeight, obstacle, obstacle2);
 				actualScreen = PLAY;
 			}
 			if (IsKeyPressed(KEY_TWO))
 			{
 				actualScreen = CREDITS;
 			}
+			if (IsKeyPressed(KEY_THREE))
+			{
+				actualScreen = TUTORIAL;
+			}
+			if (IsKeyPressed(KEY_FOUR))
+			{
+				actualScreen = EXIT;
+			}
 		}
 		else if (actualScreen == CREDITS)
 		{
-			if (IsKeyPressed(KEY_Q))
+			if (IsKeyPressed(KEY_ESCAPE))
 			{
 				actualScreen = MENU;
+			}
+		}
+		else if (actualScreen == TUTORIAL)
+		{
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				actualScreen = MENU;
+			}
+		}
+		else if (actualScreen == LOSE)
+		{
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				actualScreen = MENU;
+			}
+			if (IsKeyPressed(KEY_R))
+			{
+				actualScreen = PLAY;
+				startGame(player, screenWidth, screenHeight, obstacle, obstacle2);
 			}
 		}
 		//actualizacion
@@ -130,12 +159,12 @@ int main()
 			playerMovement(player, screenHeight);
 			obstacleMovement(obstacle, obstacle2, screenWidth, screenHeight);
 			loseConditions(obstacle, obstacle2, player, isRunning, screenHeight, actualScreen);
-			if (IsKeyPressed(KEY_Q))
+			if (IsKeyPressed(KEY_ESCAPE))
 			{
 				actualScreen = MENU;
 			}
 		}
-
+		
 
 
 
@@ -149,20 +178,41 @@ int main()
 
 		if (actualScreen == MENU)
 		{
-			DrawText("FlappuChanUwU", screenWidth / 3, screenHeight * 0.2, 50, WHITE);
-			DrawText("1. JUGAR", screenWidth / 3, screenHeight * 0.5, 40, GREEN);
-			DrawText("2. CREDITOS", screenWidth / 3, screenHeight * 0.6, 40, YELLOW);
+			DrawText("FlappuChanUwU", screenWidth / 8, screenHeight * 0.2, 50, WHITE);
+			DrawText("1. JUGAR", screenWidth / 8, screenHeight * 0.5, 40, GREEN);
+			DrawText("2. CREDITOS", screenWidth / 8, screenHeight * 0.6, 40, YELLOW);
+			DrawText("3. TUTORIAL", screenWidth / 8, screenHeight * 0.7, 40, BLUE);
+			DrawText("4. SALIR", screenWidth / 8, screenHeight * 0.8, 40, RED);
 		}
 		else if (actualScreen == PLAY)
 		{
 			//jugador
-			DrawRectangle(player.positionX, player.positionY, player.rectangleSize, player.rectangleSize, WHITE);
+			DrawRectangle(player.positionX, player.positionY, player.rectangleSize, player.rectangleSize, PURPLE);
 
 			//obstáculo superior
 			DrawRectangle(obstacle.positionX, obstacle.positionY, obstacle.sizeX, obstacle.sizeY, WHITE);
 
 			//obstáculo inferior
 			DrawRectangle(obstacle2.positionX, obstacle2.positionY, obstacle2.sizeX, obstacle2.sizeY, WHITE);
+		}
+		else if (actualScreen == CREDITS)
+		{
+			DrawText("DESARROLLADOR", screenWidth / 8, screenHeight * 0.4, 50, WHITE);
+			DrawText("Manaos_ChanUwU", screenWidth / 8, screenHeight * 0.5, 70, VIOLET);
+			DrawText("ESCAPE para volver al menu", screenWidth / 8, screenHeight * 0.65, 40, WHITE);
+		}
+		else if (actualScreen == TUTORIAL)
+		{
+			DrawText("W para saltar", screenWidth / 8, screenHeight * 0.4, 40, WHITE);
+			DrawText("ESCAPE para volver al menu", screenWidth / 8, screenHeight * 0.5, 40, WHITE);
+			DrawText("(aca tambien funciona)", screenWidth / 8, screenHeight * 0.55, 30, WHITE);
+			DrawText("Q para pausa", screenWidth / 8, screenHeight * 0.6, 40, WHITE);
+		}
+		else if (actualScreen == LOSE)
+		{
+			DrawText("puntaje", screenWidth / 8, screenHeight * 0.3, 50, WHITE);
+			DrawText("R para reintentar", screenWidth / 8, screenHeight * 0.4, 40, WHITE);
+			DrawText("ESCAPE para volver al menu", screenWidth / 8, screenHeight * 0.5, 40, WHITE);
 		}
 
 		//version
@@ -176,19 +226,22 @@ int main()
 
 //practicar ingles:c
 //hacer pantallas de derrota y luego volver al menu
-void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen actualScreen)
+void loseConditions(const Obstacle& obstacle, const Obstacle& obstacle2, Player& player, bool& isRunning, const int screenHeight, GameScreen& actualScreen)
 {
 	//colisiones
 	if (colisionCheck(obstacle, obstacle2, player))
 	{
 		cout << "Acontecio una colision" << endl;
-		actualScreen = MENU;
+		//se pausa
+		//R para reiniciar
+		//ESC para volver al menu
+		actualScreen = LOSE;
 	}
 	//piso
 	if (player.positionY > screenHeight)
 	{
 		cout << "Perdiste: tocaste el suelo" << endl;
-		actualScreen = MENU;
+		actualScreen = LOSE;
 	}
 }
 
