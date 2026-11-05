@@ -2,7 +2,8 @@
 # Carpetas de compilación
 Debug/
 Release/
-x64/Debug
+x64/Debug/
+x64/
 x86/
 bin/
 obj/
