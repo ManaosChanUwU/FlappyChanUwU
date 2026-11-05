@@ -216,7 +216,7 @@ int main()
 		}
 
 		//version
-		DrawText("V0.1", 0, 0, 20, WHITE);
+		DrawText("V0.2", 0, 0, 20, WHITE);
 
 		EndDrawing();
 	}
